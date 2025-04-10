@@ -12,9 +12,11 @@ import androidx.core.view.WindowInsetsCompat;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,24 +38,28 @@ public class MainActivity extends AppCompatActivity {
         // For address, we cannot use localhost because we are accessing from emulator,
         // So we don't have access to server and php, and have to access local host
         //through absolute address
-        StringRequest stringRequest =
-                new StringRequest(Request.Method.GET, "http://10.31.200.92/back.php",
+        JsonArrayRequest stringRequest =
+                new JsonArrayRequest(Request.Method.GET, "http://10.31.208.34/restaurant/getalldishes.php",
+                        null,
                         data -> process(data),
                         error -> handle_error(error));
 
         queue.add(stringRequest);
     }
 
-    private void process(String data) {
+    private void process(JSONArray data){
+        JSONObject dish;
         try {
-            JSONObject json = new JSONObject(data);
-            Log.d("VOLLEY", json.getJSONObject("student").getString("firstName"));
+            dish = data.getJSONObject(0);
+            String name = dish.getString("name");
+            Log.d("VOLLEY", name);
         } catch (JSONException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
+
     }
 
     private void handle_error(VolleyError error) {
-        Log.d("VOLLEY", error.getMessage());
+
     }
 }
