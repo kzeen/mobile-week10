@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:stretchColumns="0">
+
+    <!-- First row -->
+    <TableRow>
+
+        <TextView
+            android:id="@+id/dname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:fontFamily="cursive"
+            android:text="TextView"
+            android:textColorLink="#E91E63"
+            android:textSize="24sp" />
+        <ImageView
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="8dp"
+            android:src="@android:drawable/ic_menu_delete" />
+    </TableRow>
+
+    <!-- Second row -->
+    <TableRow>
+
+        <TextView
+            android:id="@+id/dprice"
+            android:layout_width="wrap_content"
+            android:layout_height="53dp"
+            android:text="Price: TextView"
+            android:textSize="18sp" />
+    </TableRow>
+
+    <!-- Third row -->
+    <TableRow>
+
+        <TextView
+            android:id="@+id/dtype"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:text="Type: TextView" />
+    </TableRow>
+
+</TableLayout>
